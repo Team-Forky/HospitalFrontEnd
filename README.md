@@ -1,27 +1,21 @@
 # HospitalFrontEnd README
 
-## Project A.M.A.N.D.A.
+## Project Hospitaller 
 ---
 ### We are deployed on Azure!
 
-[project url here]
+https://hospitallerfe-teamforky.azurewebsites.net/
 
 ---
 ## Web Application
 ***[Explain your app, should be at least a paragraph. What does it do? Why should I use? Sell your product!]***
 
-The web application consists of a frontend written in Razor views, HTML, CSS,
-Bootstrap, Popper, and jQuery. The backend was written in C# using ASP.NET Core 2, Entity Framework Core, and the MVC framework.
+The web application consists of a frontend written in Razor views, HTML, CSS and
+Bootstrap. The backend was written in C# using ASP.NET Core 2, Entity Framework Core, and the MVC framework.
 
-An interface is provided to create new blog
-posts, view existing blog posts, edit existing blog posts, delete existing
-blog posts, and search by both keywords and usernames. All blog posts can be
-enriched using Azure Language Services (part of Microsoft's Cognitive Services
-suite), Bing Image API, and Parallel Dots (for automated tagging of posts via
-key phrases detected within the post's body). Image enrichments can be added
-based on the overall sentiment score (a range 0.0 - 1.0 related to the mood
-of the post) and key phrases / keywords detected in the posts. Optionally, users
-can choose to opt-out of these features for privacy or data collection concerns.
+
+
+The homepage displays the apps logo and allows the user to go to either the Patients or About Us pages. On the Patients page the user will see a list off all patients (brought from the backend and our database) and allow the user to either edit or add entries. 
 
 ---
 
@@ -32,10 +26,9 @@ Microsoft Visual Studio Community 2017 (Version 15.5.7)
 - ASP.Net Core
 - Entity Framework
 - MVC
-- xUnit
 - Bootstrap
 - Azure
-- Parallel Dots API
+- Postman API
 
 ---
 
@@ -51,9 +44,9 @@ Microsoft Visual Studio Community 2017 (Version 15.5.7)
 Clone this repository to your local machine.
 
 ```
-$ git clone https://github.com/YourRepo/YourProject.git
+$ git clone https://github.com/Team-Forky/HospitalFrontEnd
 ```
-Once downloaded, you can either use the dotnet CLI utilities or Visual Studio 2017 (or greater) to build the web application. The solution file is located in the AmandaFE subdirectory at the root of the repository.
+Once downloaded, you can either use the dotnet CLI utilities or Visual Studio 2017 (or greater) to build the web application. The solution file is located in the /HospitalProjectFrontEnd subdirectory at the root of the repository.
 ```
 cd YourRepo/YourProject
 dotnet build
@@ -136,11 +129,10 @@ Unit testing is included in the AmandaFE/FrontendTesting project using the xUnit
 ---
 
 ## Authors
-Albus Dumbbledore
-Igor Karkaroff
-Minerva McGonagall
-Leta Lestrange
-Gellert Grindelwald
+Andrew Casper
+Teddy Damian
+Joseph Hangarter
+Matthew Johnson
 
 ---
 
