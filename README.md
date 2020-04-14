@@ -15,9 +15,13 @@ Bootstrap. The backend was written in C# using ASP.NET Core 2, Entity Framework 
 The homepage displays the apps logo and allows the user to go to either the Patients or About Us pages. On the Patients page the user will see a list off all patients (brought from the backend and our database) and allow the user to either edit or add entries. 
 
 [User Stories (see list in Trello)](https://trello.com/b/aGbpFaHo/untitled-hospital-app)
+
 [Software Requirements](requirements.md)
+
 [Domain Modeling]()
+
 [ER Diagram](https://drive.google.com/file/d/1i9tU3tyPKcPqTN7nGmVpfJLpzK5pondw/view)
+
 
 ---
 
