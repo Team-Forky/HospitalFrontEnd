@@ -25,12 +25,13 @@ namespace HospitalProjectFrontEnd.Models.Services
 
         public async Task<Patient> GetPatientById(int patientId)
         {
-            string route = $"patients/{patientId}";
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var streamTask = await client.GetStreamAsync($"{baseURL}/{route}");
-            var result = await JsonSerializer.DeserializeAsync<Patient>(streamTask);
-            return result;
+            //string route = "patients";
+            //client.DefaultRequestHeaders.Accept.Clear();
+            //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            //var streamTask = await client.GetStreamAsync($"{baseURL}/{route}/{patientId}");
+            //var result = await JsonSerializer.DeserializeAsync<Patient>(streamTask);
+            //return result;
+            return null;
         }
 
         public Task<List<Patient>> GetPatientsByName(string name)
