@@ -6,6 +6,8 @@
 
 https://hospitallerfe-teamforky.azurewebsites.net/
 
+Backend deployment: https://hospitaller-team-forky-api.azurewebsites.net/
+
 ---
 ## Web Application
 
@@ -18,9 +20,9 @@ The homepage displays the apps logo and allows the user to go to either the Pati
 
 [Software Requirements](requirements.md)
 
-[Domain Modeling]()
+![Domain Model](https://drive.google.com/file/d/1pY37V1fkqJCz3QhNsCDv2trf6NsCD1-A/view)
 
-[ER Diagram](https://drive.google.com/file/d/1i9tU3tyPKcPqTN7nGmVpfJLpzK5pondw/view)
+![ER Diagram](https://drive.google.com/file/d/1i9tU3tyPKcPqTN7nGmVpfJLpzK5pondw/view)
 
 
 ---
