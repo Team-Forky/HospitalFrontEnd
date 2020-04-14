@@ -9,6 +9,6 @@ header{
     margin-top: 25%;
 }
 
-header nav{
-    display: none;
-}
+    header nav {
+        display: none !important;
+    }

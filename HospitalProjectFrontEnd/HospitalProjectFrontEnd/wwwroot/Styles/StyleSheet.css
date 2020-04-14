@@ -9,18 +9,8 @@ header h1 {
     margin: 20px;
 }
 
-header nav {
-    width: 300px;
-    border: 2px solid red;
-    margin: 20px;
-}
-header nav ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
 
-}
-
+/*About Us page rendering*/
 .photo {
     /* display: inline-flexbox; */
     width: 200px;
@@ -33,3 +23,5 @@ header nav ul {
     margin-left: 10px;
     margin-right: 10px;
 }
+
+/*End About Us page*/
