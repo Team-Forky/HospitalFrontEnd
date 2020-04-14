@@ -21,5 +21,12 @@ namespace HospitalProjectFrontEnd.Controllers
             var result = await _patientService.GetAllPatients();
             return View(result);
         }
+
+        [HttpGet, Route("/patients/{id}")]
+        public async Task<IActionResult> PatientDetails(int patientId)
+        {
+            var result = await _patientService.GetPatientById(patientId);
+            return View(result);
+        }
     }
 }
