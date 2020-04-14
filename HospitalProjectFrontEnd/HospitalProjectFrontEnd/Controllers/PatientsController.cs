@@ -15,7 +15,7 @@ namespace HospitalProjectFrontEnd.Controllers
             _patientService = patientService;
         }
 
-        [HttpGet]
+        [HttpGet, Route("/patients")]
         public async Task<IActionResult> Index()
         {
             var result = await _patientService.GetAllPatients();
