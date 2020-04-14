@@ -1,0 +1,14 @@
+﻿body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content:center;
+}
+
+header{
+    margin-top: 25%;
+}
+
+header nav{
+    display: none;
+}

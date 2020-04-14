@@ -1,0 +1,22 @@
+﻿body {
+    background-color: white;
+    color: darkred;
+}
+
+header h1 {
+    font-family: 'Fondamento', cursive;
+    font-size: 48px;
+    margin: 20px;
+}
+
+header nav {
+    width: 300px;
+    border: 2px solid red;
+    margin: 20px;
+}
+header nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}

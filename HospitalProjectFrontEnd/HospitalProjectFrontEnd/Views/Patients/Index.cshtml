@@ -3,9 +3,20 @@
     Layout = "_Layout";
 }
 
+<!DOCTYPE html>
+<html>
 <head>
     <title>Hospitallar - Patient List</title>
+    <link href=""
 </head>
 <body>
-
+    <section>
+        <h2>Patients:</h2>
+        @foreach(var patient in Model){
+            <article>
+                <h3>@patient.Name</h3>
+            </article>
+        }
+    </section>
 </body>
+</html>

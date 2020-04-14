@@ -2,20 +2,35 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace HospitalProjectFrontEnd.Models.Services
 {
     public class PatientService : IPatientManager
     {
-        public Task<List<Patient>> GetAllPatients()
+        private static readonly HttpClient client = new HttpClient();
+        private string baseURL = @"https://hospitaller-team-forky-api.azurewebsites.net/api"; 
+        public async Task<List<Patient>> GetAllPatients()
         {
-            throw new NotImplementedException();
+            string route = "patients";
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var streamTask = await client.GetStreamAsync($"{baseURL}/{route}");
+            var result = await JsonSerializer.DeserializeAsync<List<Patient>>(streamTask);
+            return result;
         }
 
-        public Task<Patient> GetPatientById(int id)
+        public async Task<Patient> GetPatientById(int patientId)
         {
-            throw new NotImplementedException();
+            string route = $"patients/{patientId}";
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var streamTask = await client.GetStreamAsync($"{baseURL}/{route}");
+            var result = await JsonSerializer.DeserializeAsync<Patient>(streamTask);
+            return result;
         }
 
         public Task<List<Patient>> GetPatientsByName(string name)

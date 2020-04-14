@@ -18,7 +18,7 @@ namespace HospitalProjectFrontEnd.Models
         public string Birthday { get; set; }
 
         [JsonPropertyName("status")]
-        public Status Status { get; set; }
+        public string Status { get; set; }
 
         [JsonPropertyName("checkIn")]
         public DateTime CheckIn { get; set; }
