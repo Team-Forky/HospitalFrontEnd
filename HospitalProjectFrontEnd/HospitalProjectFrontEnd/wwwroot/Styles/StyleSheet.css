@@ -20,3 +20,16 @@ header nav ul {
     justify-content: space-evenly;
 
 }
+
+.photo {
+    /* display: inline-flexbox; */
+    width: 200px;
+    border-radius: 20%;
+}
+
+.icon {
+    width: 40px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
