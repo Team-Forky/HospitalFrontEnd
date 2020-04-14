@@ -6,16 +6,24 @@
 
 https://hospitallerfe-teamforky.azurewebsites.net/
 
+Backend deployment: https://hospitaller-team-forky-api.azurewebsites.net/
+
 ---
 ## Web Application
-***[Explain your app, should be at least a paragraph. What does it do? Why should I use? Sell your product!]***
 
 The web application consists of a frontend written in Razor views, HTML, CSS and
 Bootstrap. The backend was written in C# using ASP.NET Core 2, Entity Framework Core, and the MVC framework.
 
-
-
 The homepage displays the apps logo and allows the user to go to either the Patients or About Us pages. On the Patients page the user will see a list off all patients (brought from the backend and our database) and allow the user to either edit or add entries. 
+
+[User Stories (see list in Trello)](https://trello.com/b/aGbpFaHo/untitled-hospital-app)
+
+[Software Requirements](requirements.md)
+
+[Domain Model](https://drive.google.com/file/d/1pY37V1fkqJCz3QhNsCDv2trf6NsCD1-A/view)
+
+[ER Diagram](https://drive.google.com/file/d/1i9tU3tyPKcPqTN7nGmVpfJLpzK5pondw/view)
+
 
 ---
 
@@ -34,8 +42,8 @@ Microsoft Visual Studio Community 2017 (Version 15.5.7)
 
 ## Recent Updates
 
-#### V 1.4
-*Added OAuth for MySpace* - 23 Jan 2003
+#### V 0.9
+*Frontend and backend successfully connected* - 4/13/2020
 
 ---
 
@@ -121,10 +129,7 @@ Unit testing is included in the AmandaFE/FrontendTesting project using the xUnit
 
 ## Change Log
 ***[The change log will list any changes made to the code base. This includes any changes from TA/Instructor feedback]***  
-1.4: *Added OAuth for MySpace* - 23 Jan 2003  
-1.3: *Changed email handler to Alta Vista, fixed issue with styling on Netscape Navigator browser.* - 21 Dec 1999  
-1.2: *Fixed bug where pages would not load due to temp data* - 16 Jun 1998  
-1.1: *Added ability for user to change photos on a post* - 12 May 1998  
+0.9 *Frontend and backend successfully connected* - 4/13/2020
 
 ---
 
@@ -135,5 +140,3 @@ Joseph Hangarter
 Matthew Johnson
 
 ---
-
-For more information on Markdown: https://www.markdownguide.org/cheat-sheet

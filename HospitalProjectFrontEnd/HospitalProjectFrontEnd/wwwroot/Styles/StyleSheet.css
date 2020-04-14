@@ -1,9 +1,10 @@
 ﻿body {
     background-color: white;
     color: darkred;
+    padding: 25px;
 }
 
-header h1 {
+.nameLogo{
     font-family: 'Fondamento', cursive;
     font-size: 48px;
     margin: 20px;
@@ -13,7 +14,7 @@ header h1 {
 /*About Us page rendering*/
 .photo {
     /* display: inline-flexbox; */
-    width: 200px;
+    max-width: 200px !important;
     border-radius: 20%;
 }
 

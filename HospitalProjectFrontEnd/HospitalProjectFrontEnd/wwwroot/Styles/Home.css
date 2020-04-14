@@ -1,14 +1,15 @@
-﻿body {
-    text-align: center;
+﻿body{
     display: flex;
     flex-direction: column;
-    align-content:center;
+    justify-content: center;
+    height: 50rem;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 header{
-    margin-top: 25%;
+    display: none !important;
 }
-
-    header nav {
-        display: none !important;
-    }
