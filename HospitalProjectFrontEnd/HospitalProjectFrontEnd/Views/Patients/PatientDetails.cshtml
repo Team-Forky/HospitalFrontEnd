@@ -1,7 +1,7 @@
-﻿@model HospitalProjectFrontEnd.Models.Patient
-@{
+﻿@{
     Layout = "_Layout";
 }
+@model HospitalProjectFrontEnd.Models.Patient
 
 <!DOCTYPE html>
 <html>
@@ -10,15 +10,22 @@
 </head>
 <body>
     <section>
-        <h2>Patient Details</h2>
-        @*<h2>Patient: @Model.Name</h2>
-        <ul>
-            <li>ID: @Model.ID</li>
-            <li>Name: @Model.Name</li>
-            <li>Birthdate: @Model.Birthday</li>
-            <li>Status: @Model.Status</li>
-            <li>Check-in time: @Model.CheckIn</li>
-        </ul>*@
+        @if (Model == null)
+        {
+            <h2>Patient not found.</h2>
+        }
+        else
+        {
+            <h2>Patient Details</h2>
+            <h2>Patient: @Model.Name</h2>
+            <ul>
+                <li>ID: @Model.ID</li>
+                <li>Name: @Model.Name</li>
+                <li>Birthdate: @Model.Birthday</li>
+                <li>Status: @Model.Status</li>
+                <li>Check-in time: @Model.CheckIn</li>
+            </ul>
+        }
 
     </section>
 </body>
