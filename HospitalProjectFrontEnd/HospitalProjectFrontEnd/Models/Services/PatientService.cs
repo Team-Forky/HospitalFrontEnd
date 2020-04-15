@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -33,13 +34,15 @@ namespace HospitalProjectFrontEnd.Models.Services
             return result;
         }
 
-        public async Task<Patient> AddPatient(Patient patient)
+        public async Task<HttpResponseMessage> AddPatient(Patient patient)
         {
-            //TODO
             string route = "patients";
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var patientJSON = JsonSerializer.Serialize(patient);
-            // var streamTask = await client.PostAsync()
-            return null;
+            var stringContent = new StringContent(patientJSON, Encoding.Default, "application/json");
+            var streamTask = await client.PostAsync($"{baseURL}/{route}", stringContent);
+            return streamTask;
         }
 
         public Patient CreatePatient(string name, string birthday)

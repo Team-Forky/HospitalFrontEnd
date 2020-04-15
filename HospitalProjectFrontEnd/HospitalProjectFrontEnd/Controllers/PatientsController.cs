@@ -23,11 +23,17 @@ namespace HospitalProjectFrontEnd.Controllers
             return View(result);
         }
 
-        [HttpGet, Route("/patients/{patientId}")]
+        [HttpGet, Route("/patients/details/{patientId}")]
         public async Task<IActionResult> PatientDetails(int patientId)
         {
             var result = await _patientService.GetPatientById(patientId);
             return View(result);
+        }
+
+        [HttpGet, Route("/patients/add")]
+        public IActionResult AddPatient()
+        {
+            return View();
         }
 
         [HttpPost, Route("/patients/add")]
@@ -35,8 +41,7 @@ namespace HospitalProjectFrontEnd.Controllers
         {
             Patient patient = _patientService.CreatePatient(name, birthday);
             _patientService.AddPatient(patient);
-            return RedirectToAction("PatientDetails", patient.ID);
-
+            return Redirect("/patients");
         }
     }
 }

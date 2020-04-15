@@ -10,11 +10,11 @@
 @*Signin form template taken from Bootstrap documentation https://getbootstrap.com/docs/4.4/examples/sign-in/*@
 <body>
     <section class="row align-items-center">
+        <img src="~/img/Logo1.png" />
         <h1 class="nameLogo">Hospitaller</h1>
         <form class="form-signin col-md-4" method="post">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <label for="inputUsername" class="sr-only">Username</label>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <input id="inputUsername" class="form-control" placeholder="Username" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" disabled>
             <div class="checkbox mb-3">
@@ -22,7 +22,7 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <a href="/patients" class="btn btn-lg btn-primary btn-block">Sign in</a>
         </form>
     </section>
 </body>
