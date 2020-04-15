@@ -15,11 +15,14 @@
     </form>
     <section>
         <h2>Patients:</h2>
-        @foreach(var patient in Model){
+        <a class="btn btn-lg btn-primary btn-block" href="/patients/add">Add Patient</a>
+        @foreach (var patient in Model)
+        {
             <article>
                 <h3>@patient.Name</h3>
             </article>
         }
+
     </section>
 </body>
 </html>

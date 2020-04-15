@@ -1,0 +1,20 @@
+﻿@model HospitalProjectFrontEnd.Models.Patient
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospitallar - Patient Details</title>
+</head>
+<body>
+    <section>
+        <form action="add" method="post">
+            <input placeholder="Patient Name" asp-for="Name"/>
+            <input placeholder="Birthday" asp-for="Birthday"/>
+            <button type="submit">Add Patient</button>
+        </form>
+    </section>
+</body>
+</html>

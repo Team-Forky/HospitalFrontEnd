@@ -1,4 +1,5 @@
-﻿using HospitalProjectFrontEnd.Models.Interfaces;
+﻿using HospitalProjectFrontEnd.Models;
+using HospitalProjectFrontEnd.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,11 +23,25 @@ namespace HospitalProjectFrontEnd.Controllers
             return View(result);
         }
 
-        [HttpGet, Route("/patients/{id}")]
+        [HttpGet, Route("/patients/details/{patientId}")]
         public async Task<IActionResult> PatientDetails(int patientId)
         {
             var result = await _patientService.GetPatientById(patientId);
             return View(result);
+        }
+
+        [HttpGet, Route("/patients/add")]
+        public IActionResult AddPatient()
+        {
+            return View();
+        }
+
+        [HttpPost, Route("/patients/add")]
+        public IActionResult AddNewPatient(string name, string birthday)
+        {
+            Patient patient = _patientService.CreatePatient(name, birthday);
+            _patientService.AddPatient(patient);
+            return Redirect("/patients");
         }
     }
 }
