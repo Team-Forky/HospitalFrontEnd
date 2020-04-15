@@ -39,8 +39,7 @@ namespace HospitalProjectFrontEnd.Models.Services
             string route = "patients";
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            var patientJSON = JsonSerializer.Serialize(patient);
-            var stringContent = new StringContent(patientJSON, Encoding.Default, "application/json");
+            var stringContent = new StringContent(patient.ToString(), Encoding.Default, "application/json");
             var streamTask = await client.PostAsync($"{baseURL}/{route}", stringContent);
             return streamTask;
         }
