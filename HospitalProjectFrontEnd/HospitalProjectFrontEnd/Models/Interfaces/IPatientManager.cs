@@ -14,5 +14,7 @@ namespace HospitalProjectFrontEnd.Models.Interfaces
 
         Task<HttpResponseMessage> AddPatient(Patient patient);
         Patient CreatePatient(string name, string birthday);
+        Task RemovePatientById(int patientId);
+        Task UpdatePatientById(int patientId, Patient patient);
     }
 }

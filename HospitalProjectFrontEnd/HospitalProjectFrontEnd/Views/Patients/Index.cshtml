@@ -18,9 +18,30 @@
         <a class="btn btn-lg btn-primary btn-block" href="/patients/add">Add Patient</a>
         @foreach (var patient in Model)
         {
-            <article>
-                <h3>@patient.Name</h3>
-            </article>
+    <article>
+        <h3>@patient.Name</h3>      
+            @switch (patient.Status)
+        {
+            case 0:
+                <h4>Status: Stable</h4>
+                break;
+            case 1:
+                <h4>Status: UnStable</h4>
+                break;
+            case 2:
+                <h4>Status: Critical</h4>
+                break;
+            case 3:
+                <h4>Status: Deceased</h4>
+                break;
+            default:
+                <h4>Status: Unknown</h4>;
+                break;
+        }
+        
+        <h4>Check-in Date: @patient.CheckIn</h4>
+    </article>
+            <a href="/patients/details/@patient.ID" class="btn btn-primary">See Details</a>
         }
 
     </section>

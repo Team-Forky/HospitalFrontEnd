@@ -11,7 +11,7 @@ namespace HospitalProjectFrontEnd.Controllers
     public class PatientsController : Controller
     {
         private IPatientManager _patientService; // Bringing in the patient service
-        public PatientsController (IPatientManager patientService)
+        public PatientsController(IPatientManager patientService)
         {
             _patientService = patientService;
         }
@@ -37,11 +37,34 @@ namespace HospitalProjectFrontEnd.Controllers
         }
 
         [HttpPost, Route("/patients/add")]
-        public IActionResult AddNewPatient(string name, string birthday)
+        public async Task<IActionResult> AddNewPatient(string name, string birthday)
         {
             Patient patient = _patientService.CreatePatient(name, birthday);
-            _patientService.AddPatient(patient);
+            await _patientService.AddPatient(patient);
             return Redirect("/patients");
+        }
+
+        [HttpPost, Route("/patients/details/delete/{patientId}")]
+        public async Task<IActionResult> RemovePatientById(int patientId)
+        {
+            await _patientService.RemovePatientById(patientId);
+
+            return Redirect("/patients");
+        }
+
+        [HttpGet, Route("/patients/details/update/{patientId}")]
+        public async Task<IActionResult> UpdatePatient(int patientId)
+        {
+            var result = await _patientService.GetPatientById(patientId);
+            return View(result);
+        }
+
+        [HttpPost, Route("/patients/details/update/{patientId}")]
+        public async Task<IActionResult> UpdatePatientById(int patientId, Patient patient)
+        {
+            await _patientService.UpdatePatientById(patientId, patient);
+
+            return Redirect($"/patients/details/{patientId}");
         }
     }
 }
