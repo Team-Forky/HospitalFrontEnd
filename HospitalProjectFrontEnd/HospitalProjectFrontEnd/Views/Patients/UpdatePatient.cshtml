@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model HospitalProjectFrontEnd.Models.Patient
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospitallar - Patient Details</title>
+</head>
+<body>
+    <section>
+        @if (Model == null)
+        {
+            <h2>Patient not found.</h2>
+        }
+        else
+        {
+            <h2>Patient Details</h2>
+            <h2>Patient: @Model.Name</h2>
+            <ul>
+                <li>ID: @Model.ID</li>
+                <li>Name: @Model.Name</li>
+                <li>Birthdate: @Model.Birthday</li>
+                <li>Status: @Model.Status</li>
+                <li>Check-in time: @Model.CheckIn</li>
+            </ul>
+
+            <form action="@Model.ID" method="post">
+                <input asp-for="ID" value="@Model.ID" hidden />
+                <label>Name</label>
+                <input asp-for="Name" value="@Model.Name" />
+                <label>Birthday</label>
+                <input asp-for="Birthday" value="@Model.Birthday" />
+                <label>Status</label>
+                <input asp-for="Status" value="@Model.Status" />
+                <label>Check In</label>
+                <input asp-for="CheckIn" type="text" value="@Model.CheckIn" hidden/>
+                <button class="btn btn-secondary" type="submit">Update Patient Details</button>
+            </form>
+        }
+
+    </section>
+</body>
+</html>

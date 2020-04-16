@@ -25,6 +25,13 @@
                 <li>Status: @Model.Status</li>
                 <li>Check-in time: @Model.CheckIn</li>
             </ul>
+
+            <form action="delete/@Model.ID" method="post">
+                <input asp-for="ID" value="@Model.ID" disabled hidden />
+                <button class="btn btn-danger" type="submit">Delete Patient</button>
+            </form>
+
+            <a href="/patients/details/update/@Model.ID" class="btn btn-secondary">Update Patient Details</a>
         }
 
     </section>
