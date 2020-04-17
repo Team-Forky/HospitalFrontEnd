@@ -1,6 +1,11 @@
 # HospitalFrontEnd README
 
 ## Project Hospitaller 
+In this ongoing pandemic, Doctors and medical responders need powerful tools to coordinate and organize their efforts. 
+
+
+This is Hospitaller. It is designed to deploy to a hospital or emergency  medical facility and help the doctors and first responders know the status’ of their patients, what equipment and resources they have available, and give them the ability to update that information quickly as they work to save lives.
+
 ---
 ### We are deployed on Azure!
 
