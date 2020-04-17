@@ -20,6 +20,7 @@ namespace HospitalProjectFrontEnd
         {
             services.AddMvc();
             services.AddTransient<IPatientManager, PatientService>();
+            services.AddTransient<IResourceManager, ResourceService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

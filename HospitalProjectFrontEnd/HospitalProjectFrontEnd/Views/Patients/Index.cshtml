@@ -6,42 +6,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hospitallar - Patient List</title>
+    <title>Hospitaller - Patient List</title>
 </head>
 <body>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <section>
-        <h2>Patients:</h2>
-        <a class="btn btn-lg btn-primary btn-block" href="/patients/add">Add Patient</a>
+    <section class="row justify-content-center">
+        <h2 class="text-center">Patients</h2>
+        <a class="btn btn-lg btn-danger btn-block m-4" href="/patients/add">+ Add Patient</a>
         @foreach (var patient in Model)
         {
-    <article>
-        <h3>@patient.Name</h3>      
-            @switch (patient.Status)
-        {
-            case 0:
-                <h4>Status: Stable</h4>
-                break;
-            case 1:
-                <h4>Status: UnStable</h4>
-                break;
-            case 2:
-                <h4>Status: Critical</h4>
-                break;
-            case 3:
-                <h4>Status: Deceased</h4>
-                break;
-            default:
-                <h4>Status: Unknown</h4>;
-                break;
-        }
-        
-        <h4>Check-in Date: @patient.CheckIn</h4>
-    </article>
-            <a href="/patients/details/@patient.ID" class="btn btn-primary">See Details</a>
+        <article class="col-lg-6 p-3">
+            <div class="backgroundLogo">
+                <div>
+                    <h3 class="text-center">@patient.Name</h3>
+                    @switch (patient.Status)
+                    {
+                        case 0:
+                            <h4 class="text-success">Status: Stable</h4>
+                            break;
+                        case 1:
+                            <h4 class="text-warning">Status: Unstable</h4>
+                            break;
+                        case 2:
+                            <h4 class="text-danger">Status: Critical</h4>
+                            break;
+                        case 3:
+                            <h4 class="text-secondary">Status: Deceased</h4>
+                            break;
+                        default:
+                            <h4>Status: Unknown</h4>
+                            break;
+                    }
+                    @* Only show times that are not within a year of time zero (probably set to default values)*@
+                    @if (patient.CheckIn < DateTime.Now.AddYears(1 - DateTime.Now.Year))
+                    {
+                        <h4>Check-in time not found.</h4>
+                    }
+                    else
+                    {
+                        <h4>Checked in: @patient.CheckIn.AddHours(-7)</h4>
+                    }
+                    <div class="row justify-content-center">
+                        <a href="/patients/details/@patient.ID" class="btn btn-danger btn-lg col-4">See Details</a>
+                    </div>
+
+                </div>
+            </div>
+        </article>
         }
 
     </section>
