@@ -9,11 +9,11 @@ namespace HospitalProjectFrontEnd.Models.Interfaces
     public interface IPatientManager
     {
         Task<List<Patient>> GetAllPatients();
-        Task<Patient> GetPatientById(int id);
+        Task<Patient> GetPatientById(int patientId);
         Task<List<Patient>> GetPatientsByName(string name);
 
         Task<HttpResponseMessage> AddPatient(Patient patient);
-        Patient CreatePatient(string name, string birthday);
+        Patient CreatePatient(string name, string birthday, int status);
         Task RemovePatientById(int patientId);
         Task UpdatePatientById(int patientId, Patient patient);
     }

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hospitallar - Patient Details</title>
+    <title>Hospitaller - Update Patient</title>
 </head>
 <body>
     <section>
@@ -22,20 +22,53 @@
                 <li>ID: @Model.ID</li>
                 <li>Name: @Model.Name</li>
                 <li>Birthdate: @Model.Birthday</li>
-                <li>Status: @Model.Status</li>
-                <li>Check-in time: @Model.CheckIn</li>
+                @switch (Model.Status)
+                {
+                    case 0:
+                        <li class="text-success">Status: Stable</li>
+                        break;
+                    case 1:
+                        <li class="text-warning">Status: Unstable</li>
+                        break;
+                    case 2:
+                        <li class="text-danger">Status: Critical</li>
+                        break;
+                    case 3:
+                        <li class="text-secondary">Status: Deceased</li>
+                        break;
+                    default:
+                        <li>Status: Unknown</li>
+                        break;
+                }
+                @* Only show times that are not within a year of time zero (probably set to default values)*@
+                @if (Model.CheckIn < DateTime.Now.AddYears(1 - DateTime.Now.Year))
+                {
+                    <li>Check-in time not found.</li>
+                }
+                else
+                {
+                    <li>Checked in: @Model.CheckIn.AddHours(-7)</li>
+                }
             </ul>
 
             <form action="@Model.ID" method="post">
                 <input asp-for="ID" value="@Model.ID" hidden />
                 <label>Name</label>
                 <input asp-for="Name" value="@Model.Name" />
+                <br />
                 <label>Birthday</label>
                 <input asp-for="Birthday" value="@Model.Birthday" />
+                <br />
                 <label>Status</label>
-                <input asp-for="Status" value="@Model.Status" />
-                <label>Check In</label>
-                <input asp-for="CheckIn" type="text" value="@Model.CheckIn" hidden/>
+                <select asp-for="Status">
+                    <option value="0">0 - Stable</option>
+                    <option value="1">1 - Unstable</option>
+                    <option value="2">2 - Critical</option>
+                    <option value="3">3 - Deceased</option>
+                    <option value="4">4 - Unknown</option>
+                </select>
+                <br />
+                <input asp-for="CheckIn" type="text" value="@Model.CheckIn" hidden />
                 <button class="btn btn-secondary" type="submit">Update Patient Details</button>
             </form>
         }

@@ -37,9 +37,9 @@ namespace HospitalProjectFrontEnd.Controllers
         }
 
         [HttpPost, Route("/patients/add")]
-        public async Task<IActionResult> AddNewPatient(string name, string birthday)
+        public async Task<IActionResult> AddNewPatient(string name, string birthday, int status)
         {
-            Patient patient = _patientService.CreatePatient(name, birthday);
+            Patient patient = _patientService.CreatePatient(name, birthday, status);
             await _patientService.AddPatient(patient);
             return Redirect("/patients");
         }
@@ -63,7 +63,6 @@ namespace HospitalProjectFrontEnd.Controllers
         public async Task<IActionResult> UpdatePatientById(int patientId, Patient patient)
         {
             await _patientService.UpdatePatientById(patientId, patient);
-
             return Redirect($"/patients/details/{patientId}");
         }
     }

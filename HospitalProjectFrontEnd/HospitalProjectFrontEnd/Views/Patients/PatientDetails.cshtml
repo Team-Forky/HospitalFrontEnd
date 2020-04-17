@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hospitallar - Patient Details</title>
+    <title>Hospitaller - Patient Details</title>
 </head>
 <body>
     <section>
@@ -22,16 +22,54 @@
                 <li>ID: @Model.ID</li>
                 <li>Name: @Model.Name</li>
                 <li>Birthdate: @Model.Birthday</li>
-                <li>Status: @Model.Status</li>
-                <li>Check-in time: @Model.CheckIn</li>
+                @switch (Model.Status)
+                {
+                    case 0:
+                        <li class="text-success">Status: Stable</li>
+                        break;
+                    case 1:
+                        <li class="text-warning">Status: Unstable</li>
+                        break;
+                    case 2:
+                        <li class="text-danger">Status: Critical</li>
+                        break;
+                    case 3:
+                        <li class="text-secondary">Status: Deceased</li>
+                        break;
+                    default:
+                        <li>Status: Unknown</li>
+                        break;
+                }
+                @* Only show times that are not within a year of time zero (probably set to default values)*@
+                @if (Model.CheckIn < DateTime.Now.AddYears(1 - DateTime.Now.Year))
+                {
+                    <li>Check-in time not found.</li>
+                }
+                else
+                {
+                    <li>Checked in: @Model.CheckIn.AddHours(-7)</li>
+                }
+                <li>
+                    <h4>Assigned Resources:</h4>
+                    <ul>
+                        @foreach(var resource in Model.Resources)
+                        {
+                            <li>
+                                <p>Resource ID #@resource.ID</p>
+                                <p>@resource.Name</p>
+                                <p>Description: @resource.Description</p>
+                            </li>
+                        }
+                    </ul>
+                </li>
             </ul>
+
+            <a href="/patients/details/update/@Model.ID" class="btn btn-secondary">Update Patient Details</a>
 
             <form action="delete/@Model.ID" method="post">
                 <input asp-for="ID" value="@Model.ID" disabled hidden />
                 <button class="btn btn-danger" type="submit">Delete Patient</button>
             </form>
-
-            <a href="/patients/details/update/@Model.ID" class="btn btn-secondary">Update Patient Details</a>
         }
 
     </section>

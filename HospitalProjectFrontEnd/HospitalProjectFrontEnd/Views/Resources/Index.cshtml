@@ -1,0 +1,48 @@
+﻿@model IEnumerable<HospitalProjectFrontEnd.Models.Resource>
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospitaller - Resource List</title>
+</head>
+<body>
+    <section class="row justify-content-center">
+        <h2 class="text-center">Resources</h2>
+        @*<a class="btn btn-lg btn-danger btn-block m-4" href="/patients/add">+ Add Patient</a>*@
+        @foreach (var resource in Model)
+        {
+            <article class="col-lg-12 p-3">
+                <div class="backgroundLogo">
+                    <div>
+                        <h3 class="text-center">@resource.Name</h3>
+                        @switch (resource.ResourceType)
+                        {
+                            case 0:
+                                <h4>Staff</h4>
+                                break;
+                            case 1:
+                                <h4>Equipment</h4>
+                                break;
+                            case 2:
+                                <h4>Room</h4>
+                                break;
+                            default:
+                                <h4>Unknown</h4>
+                                break;
+                        }
+                        <h4>Description:</h4>
+                        <p>@resource.Description</p>
+                        @*<div class="row justify-content-center">
+                            <a href="/resources/details/@resource.ID" class="btn btn-danger btn-lg col-4">See Details</a>
+                        </div>*@
+                    </div>
+                </div>
+            </article>
+        }
+
+    </section>
+</body>
+</html>
