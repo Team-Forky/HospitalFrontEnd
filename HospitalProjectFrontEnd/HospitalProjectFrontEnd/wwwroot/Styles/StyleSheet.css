@@ -8,6 +8,31 @@
     font-family: 'Fondamento', cursive;
     font-size: 48px;
     margin: 20px;
+    text-align:center;
+}
+
+.backgroundLogo {
+    position: relative;
+    border: 3px solid darkred;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.backgroundLogo::after {
+    content: "";
+    background-image: url(../img/Logo2.png);
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.btn-danger{
+    background-color: darkred;
+    border-color: darkred;
 }
 
 

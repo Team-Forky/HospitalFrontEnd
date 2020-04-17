@@ -22,14 +22,8 @@ namespace HospitalProjectFrontEnd.Models
 
         [JsonPropertyName("checkIn")]
         public DateTime CheckIn { get; set; }
-    }
 
-    public enum Status
-    {
-        stable = 0,
-        unstable = 1,
-        critical = 2,
-        deceased = 3
+        [JsonPropertyName("resources")]
+        public List<Resource> Resources { get; set; }
     }
-
 }

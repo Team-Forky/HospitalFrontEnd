@@ -24,7 +24,8 @@ namespace HospitalProjectFrontEnd.Models.Services
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var streamTask = await client.GetStreamAsync($"{baseURL}/{route}");
             var result = await JsonSerializer.DeserializeAsync<List<Patient>>(streamTask);
-            return result;
+            List<Patient> sortedPatientsByStatusDescending = result.OrderByDescending(patient => patient.Status).ToList();
+            return sortedPatientsByStatusDescending;
         }
 
         public async Task<Patient> GetPatientById(int patientId)
@@ -49,13 +50,13 @@ namespace HospitalProjectFrontEnd.Models.Services
             return streamTask;
         }
 
-        public Patient CreatePatient(string name, string birthday)
+        public Patient CreatePatient(string name, string birthday, int status)
         {
             Patient patient = new Patient()
             {
                 Name = name,
                 Birthday = birthday,
-                Status = 0,
+                Status = status,
                 CheckIn = DateTime.Now
             };
             return patient;

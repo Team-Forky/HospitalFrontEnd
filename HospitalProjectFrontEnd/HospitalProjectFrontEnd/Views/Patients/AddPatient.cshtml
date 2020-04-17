@@ -6,14 +6,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hospitallar - Patient Details</title>
+    <title>Hospitaller - Add Patient</title>
 </head>
 <body>
     <section>
         <form action="add" method="post">
-            <input placeholder="Patient Name" asp-for="Name"/>
-            <input placeholder="Birthday" asp-for="Birthday"/>
-            <button type="submit">Add Patient</button>
+            <label>Name:</label>
+            <input placeholder="Full name: ie 'John Doe'" asp-for="Name" />
+            <br />
+            <label>Birthday:</label>
+            <input type="date" placeholder="MM/DD/YYYY" asp-for="Birthday" />
+            <br />
+            <label>Status:</label>
+            <select asp-for="Status">
+                <option value="0">0 - Stable</option>
+                <option value="1">1 - Unstable</option>
+                <option value="2">2 - Critical</option>
+                <option value="3">3 - Deceased</option>
+                <option value="4">4 - Unknown</option>
+            </select>
+            <br />
+            <button class="btn btn-danger" type="submit">Add Patient</button>
         </form>
     </section>
 </body>
