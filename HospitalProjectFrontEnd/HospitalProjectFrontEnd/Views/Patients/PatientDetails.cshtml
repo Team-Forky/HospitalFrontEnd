@@ -51,16 +51,23 @@
                 }
                 <li>
                     <h4>Assigned Resources:</h4>
-                    <ul>
-                        @foreach(var resource in Model.Resources)
-                        {
-                            <li>
-                                <p>Resource ID #@resource.ID</p>
-                                <p>@resource.Name</p>
-                                <p>Description: @resource.Description</p>
-                            </li>
-                        }
-                    </ul>
+                    @if (Model.Resources == null || Model.Resources.Count==0)
+                    {
+                        <p>None.</p>
+                    }
+                    else
+                    {
+                        <ul>
+                            @foreach(var resource in Model.Resources)
+                            {
+                                <li>
+                                    <p>Resource ID <b>#@resource.ID</b></p>
+                                    <p>@resource.Name</p>
+                                    <p><b>Description:</b> @resource.Description</p>
+                                </li>
+                            }
+                        </ul>
+                    }
                 </li>
             </ul>
 

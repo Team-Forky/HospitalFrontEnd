@@ -17,7 +17,7 @@ namespace HospitalProjectFrontEnd.Models
         [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonPropertyName("resourceType")]
+        [JsonPropertyName("resourcesType")]
         public int ResourceType { get; set; }
     }
 }
