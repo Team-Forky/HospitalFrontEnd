@@ -17,7 +17,7 @@ Backend deployment: https://hospitaller-team-forky-api.azurewebsites.net/
 ## Web Application
 
 The web application consists of a frontend written in Razor views, HTML, CSS and
-Bootstrap. The backend was written in C# using ASP.NET Core 2, Entity Framework Core, and the MVC framework.
+Bootstrap. The backend was written in C# using ASP.NET Core, Entity Framework Core, and the MVC framework.
 
 The homepage displays the apps logo and allows the user to go to either the Patients or About Us pages. On the Patients page the user will see a list off all patients (brought from the backend and our database) and allow the user to either edit or add entries. 
 
