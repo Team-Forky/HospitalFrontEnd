@@ -41,7 +41,6 @@ namespace HospitalProjectFrontEnd.Models.Services
         public async Task<HttpResponseMessage> AddPatient(Patient patient)
         {
             var data = JsonSerializer.Serialize(patient);
-
             string route = "patients";
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -79,6 +78,21 @@ namespace HospitalProjectFrontEnd.Models.Services
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var stringContent = new StringContent(data, Encoding.UTF8, "application/json");
             await client.PutAsync($"{baseURL}/{route}/{patientId}", stringContent);
+        }
+
+        public async Task AssignPatientResource(int patientId, int resourceId)
+        {
+            PatientResource patientResource = new PatientResource()
+            {
+                PatientID = patientId,
+                ResourceID = resourceId
+            };
+            var data = JsonSerializer.Serialize(patientResource);
+            string route = "patientresources";
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var stringContent = new StringContent(data, Encoding.UTF8, "application/json");
+            await client.PostAsync($"{baseURL}/{route}", stringContent);
         }
 
         public Task<List<Patient>> GetPatientsByName(string name)
