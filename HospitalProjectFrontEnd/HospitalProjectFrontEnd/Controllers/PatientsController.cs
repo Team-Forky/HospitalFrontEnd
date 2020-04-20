@@ -1,5 +1,6 @@
 ﻿using HospitalProjectFrontEnd.Models;
 using HospitalProjectFrontEnd.Models.Interfaces;
+using HospitalProjectFrontEnd.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,11 @@ namespace HospitalProjectFrontEnd.Controllers
     public class PatientsController : Controller
     {
         private IPatientManager _patientService; // Bringing in the patient service
-        public PatientsController(IPatientManager patientService)
+        private IResourceManager _resourceService; // Bringing in the resource service
+        public PatientsController(IPatientManager patientService, IResourceManager resourceService)
         {
             _patientService = patientService;
+            _resourceService = resourceService;
         }
 
         [HttpGet, Route("/patients")]
@@ -63,6 +66,22 @@ namespace HospitalProjectFrontEnd.Controllers
         public async Task<IActionResult> UpdatePatientById(int patientId, Patient patient)
         {
             await _patientService.UpdatePatientById(patientId, patient);
+            return Redirect($"/patients/details/{patientId}");
+        }
+
+        [HttpGet, Route("/patients/resources/{patientId}")]
+        public async Task<IActionResult> UpdatePatientResources(int patientId)
+        {
+            var patientModels = new PatientModels(); // Use viewmodel PatientModels to bring in both patient data and the list of all resources
+            patientModels.Patient = await _patientService.GetPatientById(patientId);
+            patientModels.AllResources = await _resourceService.GetAllResources();
+            return View(patientModels);
+        }
+
+        [HttpPost, Route("/patients/resources/{patientId}")]
+        public async Task<IActionResult> AssignPatientResourceByPatientIdAndResourceId(int patientId, int resourceId)
+        {
+            await _patientService.AssignPatientResource(patientId, resourceId);
             return Redirect($"/patients/details/{patientId}");
         }
     }

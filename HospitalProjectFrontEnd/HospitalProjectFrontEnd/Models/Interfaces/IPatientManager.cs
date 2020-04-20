@@ -16,5 +16,7 @@ namespace HospitalProjectFrontEnd.Models.Interfaces
         Patient CreatePatient(string name, string birthday, int status);
         Task RemovePatientById(int patientId);
         Task UpdatePatientById(int patientId, Patient patient);
+
+        Task AssignPatientResource(int patientId, int resourceId);
     }
 }
