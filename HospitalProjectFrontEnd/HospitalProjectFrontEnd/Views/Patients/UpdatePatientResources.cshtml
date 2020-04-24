@@ -1,0 +1,114 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model HospitalProjectFrontEnd.ViewModels.PatientModels
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospitaller - Patient Details</title>
+</head>
+<body>
+    <section>
+        @if (Model.Patient == null)
+        {
+            <h2>Patient not found.</h2>
+        }
+        else
+        {
+            <h2 class="text-center">Patient Resources - Update</h2>
+            <h2>Patient: @Model.Patient.Name</h2>
+            <ul>
+                <li>ID: @Model.Patient.ID</li>
+                <li>Name: @Model.Patient.Name</li>
+                @{DateTime dateOfBirth;
+                }
+                @if (DateTime.TryParse(Model.Patient.Birthday, out dateOfBirth))
+                {
+                    <li>Date of Birth: @dateOfBirth.ToShortDateString()</li>
+                }
+                else
+                {
+                    <li>Date of Birth: (Needs to be updated)</li>
+                }
+                @switch (Model.Patient.Status)
+                {
+                    case 0:
+                        <li class="text-success">Status: Stable</li>
+                        break;
+                    case 1:
+                        <li class="text-warning">Status: Unstable</li>
+                        break;
+                    case 2:
+                        <li class="text-danger">Status: Critical</li>
+                        break;
+                    case 3:
+                        <li class="text-secondary">Status: Deceased</li>
+                        break;
+                    default:
+                        <li>Status: Unknown</li>
+                        break;
+                }
+                @* Only show times that are not within a year of time zero (probably set to default values)*@
+                @if (Model.Patient.CheckIn < DateTime.Now.AddYears(1 - DateTime.Now.Year))
+                {
+                    <li>Check-in time not found.</li>
+                }
+                else
+                {
+                    <li>Checked in: @Model.Patient.CheckIn.AddHours(-7)</li>
+                }
+            <li>
+                <h4>Update Resources:</h4>
+                <form method="post">
+                    <input name="patientId" value="@Model.Patient.ID" hidden/>
+                    <select name="resourceId">
+                        @{string resourceType;
+                        }
+                        @foreach (var resource in Model.AllResources)
+                        {
+                            switch (resource.ResourceType)
+                            {
+                                case 0:
+                                    resourceType = "Staff";
+                                    break;
+                                case 1:
+                                    resourceType = "Equipment";
+                                    break;
+                                case 2:
+                                    resourceType = "Room";
+                                    break;
+                                default:
+                                    resourceType = "Unknown";
+                                    break;
+                            }
+                            <option value="@resource.ID">@resourceType - @resource.Name - @resource.Description</option>
+                        }
+                    </select>
+                    <button class="btn btn-danger" type="submit">Assign Resource</button>
+                </form>
+                @if (Model.Patient.Resources == null || Model.Patient.Resources.Count == 0)
+                            {
+                    <p>None.</p>
+                }
+                else
+                {
+                    <ul>
+                        @foreach (var resource in Model.Patient.Resources)
+                            {
+                            <li>
+                                <p>Resource ID <b>#@resource.ID</b></p>
+                                <p>@resource.Name</p>
+                                <p><b>Description:</b> @resource.Description</p>
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
+            </ul>
+            
+        }
+
+    </section>
+</body>
+</html>

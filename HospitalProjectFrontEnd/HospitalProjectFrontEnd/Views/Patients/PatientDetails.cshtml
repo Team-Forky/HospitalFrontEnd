@@ -16,12 +16,21 @@
         }
         else
         {
-            <h2>Patient Details</h2>
+            <h2 class="text-center">Patient Details</h2>
             <h2>Patient: @Model.Name</h2>
             <ul>
                 <li>ID: @Model.ID</li>
                 <li>Name: @Model.Name</li>
-                <li>Birthdate: @Model.Birthday</li>
+                @{DateTime dateOfBirth;
+                }
+                @if (DateTime.TryParse(Model.Birthday, out dateOfBirth))
+                {
+                    <li>Date of Birth: @dateOfBirth.ToShortDateString()</li>
+                }
+                else
+                {
+                    <li>Date of Birth: (Needs to be updated)</li>
+                }
                 @switch (Model.Status)
                 {
                     case 0:
@@ -49,16 +58,17 @@
                 {
                     <li>Checked in: @Model.CheckIn.AddHours(-7)</li>
                 }
+                <a href="/patients/details/update/@Model.ID" class="btn btn-secondary">Update Patient Details</a>
                 <li>
                     <h4>Assigned Resources:</h4>
-                    @if (Model.Resources == null || Model.Resources.Count==0)
+                    @if (Model.Resources == null || Model.Resources.Count == 0)
                     {
                         <p>None.</p>
                     }
                     else
                     {
                         <ul>
-                            @foreach(var resource in Model.Resources)
+                            @foreach (var resource in Model.Resources)
                             {
                                 <li>
                                     <p>Resource ID <b>#@resource.ID</b></p>
@@ -71,7 +81,7 @@
                 </li>
             </ul>
 
-            <a href="/patients/details/update/@Model.ID" class="btn btn-secondary">Update Patient Details</a>
+            <a href="/patients/resources/@Model.ID" class="btn btn-secondary">Update Patient Resources</a>
 
             <form action="delete/@Model.ID" method="post">
                 <input asp-for="ID" value="@Model.ID" disabled hidden />
