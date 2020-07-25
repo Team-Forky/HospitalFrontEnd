@@ -1,6 +1,6 @@
 # HospitalFrontEnd README
 
-## Project Hospitaller 
+## 🏥 Project Hospitaller 
 In this ongoing pandemic, Doctors and medical responders need powerful tools to coordinate and organize their efforts. 
 
 
@@ -14,7 +14,7 @@ https://hospitallerfe-teamforky.azurewebsites.net/
 Backend deployment: https://hospitaller-team-forky-api.azurewebsites.net/
 
 ---
-## Web Application
+## 🏥 Web Application
 
 The web application consists of a frontend written in Razor views, HTML, CSS and
 Bootstrap. The backend was written in C# using ASP.NET Core, Entity Framework Core, and the MVC framework.
@@ -32,7 +32,7 @@ The homepage displays the apps logo and allows the user to go to either the Pati
 
 ---
 
-## Tools Used
+## 🩺 Tools Used
 Microsoft Visual Studio Community 2017 (Version 15.5.7)
 
 - C#
