@@ -15,7 +15,7 @@ namespace HospitalProjectFrontEnd.Models.Services
     public class PatientService : IPatientManager
     {
         private static readonly HttpClient client = new HttpClient();
-        private string baseURL = @"https://hospitaller-team-forky-api.azurewebsites.net/api"; 
+        private string baseURL = @"https://hospitaller-api.azurewebsites.net/api"; 
         //private string baseURL = @"https://localhost:44325/api";
         public async Task<List<Patient>> GetAllPatients()
         {
