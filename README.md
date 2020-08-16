@@ -11,7 +11,9 @@ This is Hospitaller. It is designed to deploy to a hospital or emergency  medica
 
 https://hospitallerfe-teamforky.azurewebsites.net/
 
-Backend deployment: https://hospitaller-team-forky-api.azurewebsites.net/
+Backend deployment: https://hospitaller-api.azurewebsites.net
+
+Backend Github: https://github.com/Team-Forky/API
 
 ---
 ## 🏥 Web Application
