@@ -1,6 +1,6 @@
-# HospitalFrontEnd README
+# Hospitaller
 
-## 🏥 Project Hospitaller 
+## 🏥 Project Vision
 In this ongoing pandemic, Doctors and medical responders need powerful tools to coordinate and organize their efforts. 
 
 
