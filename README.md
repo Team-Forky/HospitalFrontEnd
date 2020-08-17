@@ -9,7 +9,7 @@ This is Hospitaller. It is designed to deploy to a hospital or emergency  medica
 ---
 ### We are deployed on Azure!
 
-https://hospitallerfe-teamforky.azurewebsites.net/
+https://hospitallerhealth.azurewebsites.net/
 
 Backend deployment: https://hospitaller-api.azurewebsites.net
 
@@ -66,37 +66,37 @@ Once downloaded, you can either use the dotnet CLI utilities or Visual Studio 20
 cd YourRepo/YourProject
 dotnet build
 ```
-The dotnet tools will automatically restore any NuGet dependencies. Before running the application, the provided code-first migration will need to be applied to the SQL server of your choice configured in the /AmandaFE/AmandaFE/appsettings.json file. This requires the Microsoft.EntityFrameworkCore.Tools NuGet package and can be run from the NuGet Package Manager Console:
+The dotnet tools will automatically restore any NuGet dependencies. Before running the application, the provided code-first migration will need to be applied to the SQL server of your choice configured in your user secrets file. This requires the Microsoft.EntityFrameworkCore.Tools NuGet package and can be run from the NuGet Package Manager Console:
 ```
 Update-Database
 ```
 Once the database has been created, the application can be run. Options for running and debugging the application using IIS Express or Kestrel are provided within Visual Studio. From the command line, the following will start an instance of the Kestrel server to host the application:
 ```
-cd YourRepo/YourProject
+cd HospitalFrontEnd/HospitalProjectFrontEnd
 dotnet run
 ```
-Unit testing is included in the AmandaFE/FrontendTesting project using the xUnit test framework. Tests have been provided for models, view models, controllers, and utility classes for the application.
-
 ---
 
 ## Usage
-***[Provide some images of your app with brief description as title]***
 
-### Overview of Recent Posts
+### Login Page
 ![Overview of Recent Posts](https://via.placeholder.com/500x250)
 
-### Creating a Post
+### Patient Overview
 ![Post Creation](https://via.placeholder.com/500x250)
 
-### Enriching a Post
+### Patient Details
 ![Enriching Post](https://via.placeholder.com/500x250)
 
-### Viewing Post Details
+### Resource Overview
+![Details of Post](https://via.placeholder.com/500x250)
+
+### Patient Details - Update
 ![Details of Post](https://via.placeholder.com/500x250)
 
 ---
 ## Data Flow (Frontend, Backend, REST API)
-***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
+The user submits new patient data via the form on the add patients page. That data is bound
 ![Data Flow Diagram](/assets/img/Flowchart.png)
 
 ---
