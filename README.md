@@ -49,8 +49,9 @@ Microsoft Visual Studio Community 2017 (Version 15.5.7)
 
 ## Recent Updates
 
-#### V 0.9
-*Frontend and backend successfully connected* - 4/13/2020
+#### V 1.1
+
+*Redeployed with new backend* - 8/16/2020
 
 ---
 
@@ -63,7 +64,7 @@ $ git clone https://github.com/Team-Forky/HospitalFrontEnd
 ```
 Once downloaded, you can either use the dotnet CLI utilities or Visual Studio 2017 (or greater) to build the web application. The solution file is located in the /HospitalProjectFrontEnd subdirectory at the root of the repository.
 ```
-cd YourRepo/YourProject
+cd HospitalFrontEnd/HospitalProjectFrontEnd
 dotnet build
 ```
 The dotnet tools will automatically restore any NuGet dependencies. Before running the application, the provided code-first migration will need to be applied to the SQL server of your choice configured in your user secrets file. This requires the Microsoft.EntityFrameworkCore.Tools NuGet package and can be run from the NuGet Package Manager Console:
@@ -80,70 +81,75 @@ dotnet run
 ## Usage
 
 ### Login Page
-![Overview of Recent Posts](https://via.placeholder.com/500x250)
+![Login](assets/HospitallerDemo1.png)
 
 ### Patient Overview
-![Post Creation](https://via.placeholder.com/500x250)
+![Patients](assets/HospitallerDemo2.png)
 
 ### Patient Details
-![Enriching Post](https://via.placeholder.com/500x250)
+![Patient Details](assets/HospitallerDemo3.png)
 
 ### Resource Overview
-![Details of Post](https://via.placeholder.com/500x250)
-
-### Patient Details - Update
-![Details of Post](https://via.placeholder.com/500x250)
+![Resources](assets/HospitallerDemo4.png)
 
 ---
 ## Data Flow (Frontend, Backend, REST API)
-The user submits new patient data via the form on the add patients page. That data is bound
+The user submits new patient data via the form on the add patients page on the frontend by clicking the button. That data is sent from the page to the matching parameters in the post action within the frontend patients controller, which sends the data into the frontend patient service. The patient service then creates a patient object from the data, starts an http client, adds headers, serializes the object to JSON, and posts that data to the backend. 
+
+Once the request reaches the backend, the backend patients controller routes the request to the post action, which translates the attached JSON data to a patient object. The action then takes the patient object and sends it into the backend patient service. The patient service uses Entity Framework and the dbcontext to translate the data into SQL queries and enter that data into the database. Once that's complete, the backend composes the response with a success status code and sends that response back to the front end.
+
+The front end recieves the success response in the controller and continues, redirecting the user to the patients overview page. As part of loading that page, the frontend makes another request to the backend for data on all patients. The backend retrieves that data from the database, serializes it to JSON, and sends it back to the frontend in the response body. The frontend patients controller deserializes that data to a list of patients and creates the page, using the data to populate the page. The user sees all the patients, including the one they just added.
+
 ![Data Flow Diagram](/assets/img/Flowchart.png)
 
 ---
 ## Data Model
 
 ### Overall Project Schema
-***[Add a description of your DB schema. Explain the relationships to me.]***
 ![Database Schema](/assets/img/ERD.png)
 
 ---
 ## Model Properties and Requirements
 
-### Blog
+### Patient
 
-| Parameter | Type | Required |
-| --- | --- | --- |
-| ID  | int | YES |
-| Summary | string | YES |
-| Content | string | YES |
-| Tags | string(s) | NO |
-| Picture | img jpeg/png | NO |
-| Sentiment | float | NO |
-| Keywords | string(s) | NO |
-| Related Posts | links | NO |
-| Date | date/time object | YES |
+| Parameter | Type | 
+| --- | --- | 
+| ID  | int | 
+| Name | string | 
+| Birthday | string | 
+| Status | int | 
+| CheckIn | DateTime | 
+| Resources | List(Resource) | 
 
 
-### User
+### Resource
 
-| Parameter | Type | Required |
-| --- | --- | --- |
-| ID  | int | YES |
-| Name/Author | string | YES |
-| Posts | list | YES |
+| Parameter | Type |
+| --- | --- |
+| ID  | int |
+| Name | string |
+| Description | string |
+| ResourceType | int |
 
 ---
 
 ## Change Log
-***[The change log will list any changes made to the code base. This includes any changes from TA/Instructor feedback]***  
+ 
+1.1 *Redeployed with new backend* - 8/16/2020
+
 0.9 *Frontend and backend successfully connected* - 4/13/2020
 
 ---
 
 ## Authors
+
 Andrew Casper
+
 Teddy Damian
+
 Joseph Hangarter
+
 Matthew Johnson
 
 ---
